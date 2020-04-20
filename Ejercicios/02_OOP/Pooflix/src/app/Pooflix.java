@@ -20,12 +20,57 @@ public class Pooflix {
     }
 
     public void inicializarCatalogo() {
-        this.inicializarBreakingBad();
-        this.inicializarLucifer();
+       this.inicializarBreakingBad();
+       this.inicializarLucifer();
     }
 
     public void inicializarBreakingBad() {
-        ///
+        Serie breakingB = new Serie();
+        breakingB.nombre = "Breaking Bad";
+
+        Actor actor1 = new Actor();
+        actor1.nombre = "Brian Crasnton";
+
+        Clasificacion clasificacion = new Clasificacion();
+        clasificacion.descripcion = "Mayor 18";
+        clasificacion.edadMinima = 18;
+        clasificacion.tipo = "M";
+
+        breakingB.clasificacion = clasificacion;
+
+        breakingB.calificacion = 9;
+
+        breakingB.elenco.add(actor1);
+
+        Genero genero = new Genero();
+        genero.nombre = "Drama";
+        breakingB.genero = genero;
+
+        Temporada t5 = new Temporada();
+        t5.numero = 5;
+
+        Episodio ep = new Episodio();
+
+        ep.numero = 7;
+        ep.nombre = "Say my name";
+        ep.duracion = 43;
+
+        t5.episodios.add(ep);
+
+        ep = new Episodio();
+
+        ep.numero = 5;
+        ep.nombre = "Ozymandias";
+        ep.duracion = 41;
+
+        t5.episodios.add(ep);
+
+        breakingB.temporadas.add(t5);
+
+        this.series.add(breakingB);
+
+        
+
     }
     public void inicializarLucifer() {
 

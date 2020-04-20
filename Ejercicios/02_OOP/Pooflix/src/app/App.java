@@ -23,6 +23,10 @@ public class App {
         elTop = laMejorTemporada.getEpisodio(7);
 
         elTop.reproducir();
+
+        elTop = laMejorTemporada.getEpisodio(5);
+
+        elTop.reproducir();
         
 
     }
