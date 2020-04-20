@@ -18,5 +18,7 @@ public class Contenido {
     public List<Actor> elenco = new ArrayList<>();
     public double calificacion;
 
-    
+    public void reproducir() {
+
+    }
 }
