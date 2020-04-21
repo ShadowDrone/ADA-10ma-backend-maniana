@@ -65,6 +65,14 @@ public class Pooflix {
 
         t5.episodios.add(ep);
 
+        Websodio webi = new Websodio();
+        webi.numero = 20;
+        webi.nombre = "Episodio web";
+        webi.duracion = 30;
+        webi.url = "http://direccion.com";
+
+        t5.episodios.add(webi);
+
         breakingB.temporadas.add(t5);
 
         this.series.add(breakingB);
