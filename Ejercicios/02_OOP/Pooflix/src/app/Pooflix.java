@@ -20,8 +20,8 @@ public class Pooflix {
     }
 
     public void inicializarCatalogo() {
-       this.inicializarBreakingBad();
-       this.inicializarLucifer();
+        this.inicializarBreakingBad();
+        this.inicializarLucifer();
     }
 
     public void inicializarBreakingBad() {
@@ -49,27 +49,23 @@ public class Pooflix {
         Temporada t5 = new Temporada();
         t5.numero = 5;
 
-        Episodio ep = new Episodio();
-
-        ep.numero = 7;
-        ep.nombre = "Say my name";
-        ep.duracion = 43;
+        Episodio ep = new Episodio(7, "Say my name", 43);
 
         t5.episodios.add(ep);
 
-        ep = new Episodio();
+        ep = new Episodio(5, "Ozymandias", 41);
 
-        ep.numero = 5;
-        ep.nombre = "Ozymandias";
-        ep.duracion = 41;
+        // ep.numero = 5;
+        // ep.nombre = "Ozymandias";
+        // ep.duracion = 41;
 
         t5.episodios.add(ep);
 
-        Websodio webi = new Websodio();
-        webi.numero = 20;
-        webi.nombre = "Episodio web";
-        webi.duracion = 30;
-        webi.url = "http://direccion.com";
+        Websodio webi = new Websodio(20, "Episodio web", 30, "http://direccion.com");
+        /*
+         * webi.numero = 20; webi.nombre = "Episodio web"; webi.duracion = 30; webi.url
+         * = "http://direccion.com";
+         */
 
         t5.episodios.add(webi);
 
@@ -77,9 +73,8 @@ public class Pooflix {
 
         this.series.add(breakingB);
 
-        
-
     }
+
     public void inicializarLucifer() {
 
     }
