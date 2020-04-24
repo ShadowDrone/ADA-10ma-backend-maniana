@@ -51,6 +51,10 @@ public class Pooflix {
 
         Episodio ep = new Episodio(7, "Say my name", 43);
 
+        //ep.descripcion = "Esta es la descripcion";
+        ep.setDescripcion("Esta es la descripcion");
+        ep.setAnio(2000);
+
         t5.episodios.add(ep);
 
         ep = new Episodio(5, "Ozymandias", 41);
@@ -69,7 +73,7 @@ public class Pooflix {
 
         t5.episodios.add(webi);
 
-        breakingB.temporadas.add(t5);
+        breakingB.getTemporadas().add(t5);
 
         this.series.add(breakingB);
 

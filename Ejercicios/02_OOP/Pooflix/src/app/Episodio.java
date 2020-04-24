@@ -22,8 +22,8 @@ public class Episodio {
         this.nombre = nombre;
         this.duracion = duracion;
     }
-
-    /*public Episodio(int numero, String nombre){
+/*
+    public Episodio(int numero, String nombre){
         this.numero = numero;
         this.nombre = nombre;
     }
@@ -50,15 +50,68 @@ public class Episodio {
         this.descripcion = descripcion;
     }*/
 
-    public int numero;
-    public String nombre;
-    public double duracion;
-    public String descripcion;
-    public List<Actor> elenco;
-    public int anio;
+    private int numero;
+    private String nombre;
+    private double duracion;
+    private String descripcion;
+    private List<Actor> elenco;
+    private int anio;
 
+
+
+    
     public void reproducir() {
         System.out.println("Reproduciendo episodio " + this.numero + " " + this.nombre);
     }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(double duracion) {
+        this.duracion = duracion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<Actor> getElenco() {
+        return elenco;
+    }
+
+    public void setElenco(List<Actor> elenco) {
+        this.elenco = elenco;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    
 
 }
