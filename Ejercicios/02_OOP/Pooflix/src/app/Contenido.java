@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Contenido
  */
-public class Contenido {
+public abstract class Contenido {
 
     // Declarar variables de instancia: accesor tipo NombreVariable:
 

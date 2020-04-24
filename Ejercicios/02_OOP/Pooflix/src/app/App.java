@@ -24,11 +24,10 @@ public class App {
 
         elTop.reproducir();
 
-        //websodio 
+        // websodio
         elTop = laMejorTemporada.getEpisodio(20);
 
         elTop.reproducir();
-        
 
         System.out.println("Empezando otra cosa");
 
@@ -45,17 +44,20 @@ public class App {
 
         epiDemo.reproducir();
 
-        //primero: preguntar si es un objeto de X tipo, usando el operador "instanceof"
-        //segundo: usando el operador de casteo. (es decir, "transformando" la referencia)
+        // primero: preguntar si es un objeto de X tipo, usando el operador "instanceof"
+        // segundo: usando el operador de casteo. (es decir, "transformando" la
+        // referencia)
         if (epiDemo instanceof Websodio) {
-            Websodio webi = (Websodio)epiDemo;
+            Websodio webi = (Websodio) epiDemo;
             webi.enviarAlertaDeQueEstaOnline();
 
-        }
-        else {
+        } else {
             System.out.println("No hay que hacer mas nada con un Episodio");
         }
 
+        miPooflix.inicializarListaNominados();
+
+        miPooflix.reproducirTrailersDeNominacion();
 
         int lala;
 

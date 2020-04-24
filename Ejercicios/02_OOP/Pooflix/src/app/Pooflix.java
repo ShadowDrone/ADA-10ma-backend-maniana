@@ -11,6 +11,8 @@ public class Pooflix {
     public List<Pelicula> peliculas = new ArrayList<Pelicula>();
     public List<Serie> series = new ArrayList<Serie>();
 
+    public List<INominable> nomidados = new ArrayList<>();
+
     public Serie buscarSerie(String titulo) {
         for (Serie s : this.series) {
             if (s.nombre.equals(titulo))
@@ -20,8 +22,30 @@ public class Pooflix {
     }
 
     public void inicializarCatalogo() {
+        inicializarPelis();
         this.inicializarBreakingBad();
         this.inicializarLucifer();
+    }
+
+    public void inicializarPelis() {
+        Pelicula peli = new Pelicula();
+        peli.nombre = "The Shining";
+        Actor actor = new Actor();
+        actor.nombre = "Jack";
+
+        peli.elenco.add(actor);
+
+        this.peliculas.add(peli);
+
+        peli = new Pelicula();
+        peli.nombre = "Deadpool";
+        actor = new Actor();
+        actor.nombre = "Ryan";
+
+        peli.elenco.add(actor);
+
+        this.peliculas.add(peli);
+
     }
 
     public void inicializarBreakingBad() {
@@ -51,7 +75,7 @@ public class Pooflix {
 
         Episodio ep = new Episodio(7, "Say my name", 43);
 
-        //ep.descripcion = "Esta es la descripcion";
+        // ep.descripcion = "Esta es la descripcion";
         ep.setDescripcion("Esta es la descripcion");
         ep.setAnio(2000);
 
@@ -75,12 +99,36 @@ public class Pooflix {
 
         breakingB.getTemporadas().add(t5);
 
+        List<Temporada> tmp = breakingB.getTemporadas();
+
         this.series.add(breakingB);
 
     }
 
     public void inicializarLucifer() {
 
+    }
+
+    public void inicializarListaNominados() {
+
+        for (Pelicula peli : this.peliculas) {
+            this.nomidados.add(peli);
+            for (Actor actor : peli.elenco)
+                this.nomidados.add(actor);
+
+        }
+        for (Serie serie : this.series) {
+            for (Actor actor : serie.elenco)
+                this.nomidados.add(actor);
+
+        }
+    }
+
+    public void reproducirTrailersDeNominacion() {
+        for (INominable nominado : nomidados) {
+
+            nominado.reproducirTrailerNominacion();
+        }
     }
 
 }
