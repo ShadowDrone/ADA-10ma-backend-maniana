@@ -1,7 +1,8 @@
 package app;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import app.personas.Actor;
 
 /**
  * Pooflix

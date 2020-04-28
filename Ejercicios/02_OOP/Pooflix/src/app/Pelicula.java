@@ -2,6 +2,8 @@ package app;
 
 import java.util.List;
 
+import app.personas.*;
+
 /**
  * Peli
  */
