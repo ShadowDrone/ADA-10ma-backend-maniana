@@ -75,12 +75,12 @@ public class App {
 
     /** Logica para crear un artista pidiendo datos por teclado */
     public static void crearArtista() {
-        String nombre;
+        
         System.out.println("Ingrese el nombre del artista");
-        nombre = Teclado.nextLine();
+
 
         Artista artistaNuevo = new Artista();
-        artistaNuevo.nombre = nombre;
+        artistaNuevo.nombre = Teclado.nextLine();
 
         ServicioSpookify.artistas.add(artistaNuevo);
 

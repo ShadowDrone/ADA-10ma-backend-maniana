@@ -8,6 +8,6 @@ public class Contenido {
     public int duracion; // en segundos
 
     public void reproducir() {
-
+        System.out.println("Reproduciendo un contenido que ni idea");
     }
 }
