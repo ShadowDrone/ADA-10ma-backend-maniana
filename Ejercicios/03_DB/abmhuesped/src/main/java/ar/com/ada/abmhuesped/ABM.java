@@ -1,6 +1,8 @@
 package ar.com.ada.abmhuesped;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -98,7 +100,45 @@ public class ABM {
         if (domAlternativo != null)
             huesped.setDomicilioAlternativo(domAlternativo);
 
+        //Vamos a generar una reserva.
+        Reserva reserva = new Reserva();
+
+        BigDecimal importeReserva = new BigDecimal(1000);
+        reserva.setImporteReserva(importeReserva); //Forma 1
+       
+        reserva.setImporteTotal(new BigDecimal(3000)); //Forma 2
+
+        reserva.setImportePagado(new BigDecimal(0));
+
+        reserva.setFechaReserva(new Date()); //Fecha actual
+
+        System.out.println("Ingrese la fecha de ingreso(dd/mm/yy)");
+
+        Date fechaIngreso = null;
+        Date fechaEgreso = null;
+
+        DateFormat dFormat = new SimpleDateFormat("dd/MM/yy");
+
+        //Alternativa de leer fecha con try catch
+        try{
+            fechaIngreso = dFormat.parse(Teclado.nextLine());
+
+        } catch(Exception ex){
+            System.out.println("Ingreso una fecha invalida.");
+            System.out.println("Vuelva a e empezar");
+            return;
+        }
+
+        //Alternativa de leer fecha a los golpes(puede tirar una excepcion)
+        System.out.println("Ingrese la fecha de egreso(dd/mm/yy)");
+        fechaEgreso = dFormat.parse(Teclado.nextLine());
         
+        reserva.setFechaIngreso(fechaIngreso); 
+        reserva.setFechaEgreso(fechaEgreso); //por ahora 1 dia.
+        reserva.setTipoEstadoId(20); //En mi caso, 20 significa pagado.
+        reserva.setHuesped(huesped); //Esta es la relacion bidireccional
+        
+        //Actualizo todos los objeto
         ABMHuesped.create(huesped);
 
         /*
@@ -235,9 +275,8 @@ public class ABM {
 
     public void mostrarHuesped(Huesped huesped) {
 
-        System.out.print("Id: " + huesped.getHuespedId() + " Nombre: " + huesped.getNombre()
-        + " DNI: " + huesped.getDni()
-        + " Domicilio: " + huesped.getDomicilio());
+        System.out.print("Id: " + huesped.getHuespedId() + " Nombre: " + huesped.getNombre() + " DNI: "
+                + huesped.getDni() + " Domicilio: " + huesped.getDomicilio());
 
         if (huesped.getDomicilioAlternativo() != null)
             System.out.println(" Alternativo: " + huesped.getDomicilioAlternativo());
