@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Listado Empleados</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7af193f245.js"></script>
+</head>
+
+<body>
+
+
+    <h1 class="text-center">Hola manotas aca van los empleados
+        <span class="fa fa-poo" style="color:pink">
+        </span>
+    </h1>
+
+    <div class="content-fluid">
+        <div class=row>
+            <div class="col-3"></div>
+            <div class="col-6">
+                <table id="empleados" class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <td>Id</td>
+                            <td>Nombre</td>
+                            <td>Sueldo</td>
+                            <td>Categoria</td>
+                        </tr>
+                    </thead>
+                    <tbody id="empleadosBody">
+
+                    </tbody>
+                </table>
+                <button>Buscar</button>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+
+    <script>
+
+        $("button").click(function () {
+            $.get("/empleados", function (data, status) {
+                //$("#empleadosBody").empty();
+                $.each(data, function (i, item) {
+                    var $tr = $('<tr>').append(
+                        $('<td>').text(item.empleadoId),
+                        $('<td>').text(item.nombre),
+                        $('<td>').text(item.sueldo),
+                        $('<td>').text(item.categoria.nombre)
+                    ).appendTo('#empleadosBody');
+                });
+
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>
