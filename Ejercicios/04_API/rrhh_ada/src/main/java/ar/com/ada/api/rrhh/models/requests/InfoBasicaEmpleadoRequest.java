@@ -8,5 +8,6 @@ import java.math.BigDecimal;
     public int edad;
     public BigDecimal sueldo;
     public int categoriaId;
+    public int dni;
 
 }

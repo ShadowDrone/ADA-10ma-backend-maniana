@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.ada.api.rrhh.entities.Categoria;
+import ar.com.ada.api.rrhh.entities.Empleado;
+import ar.com.ada.api.rrhh.models.responses.CategoriasNombresResponse;
 import ar.com.ada.api.rrhh.services.CategoriaService;
 
 @RestController
@@ -32,4 +34,35 @@ public class CategoriaController {
 
     }
 
+    
+    @GetMapping("/categorias/sueldos-nuevos")
+    public ResponseEntity<List<Empleado>> getSueldosNuevos() {
+
+        return ResponseEntity.ok(categoriaService.calcularProximosSueldos());
+
+    }
+
+    @GetMapping("/categorias/sueldos-actuales")
+    public ResponseEntity<List<Empleado>> getSueldosActuales() {
+
+        return ResponseEntity.ok(categoriaService.obtenerSueldosActuales());
+
+    }
+
+    @GetMapping("/categorias/vacias")
+    public ResponseEntity<List<Categoria>> getCategoriasSinEmpleados() {
+
+        return ResponseEntity.ok(categoriaService.obtenerCategoriasSinEmpleados());
+
+    }
+
+    @GetMapping("/categorias/nombres")
+    public ResponseEntity<CategoriasNombresResponse> getCategoriasNombres() {
+
+        CategoriasNombresResponse r = new CategoriasNombresResponse();
+
+        r.nombres = categoriaService.obtenerNombresCategorias();
+        return ResponseEntity.ok(r);
+
+    }
 }

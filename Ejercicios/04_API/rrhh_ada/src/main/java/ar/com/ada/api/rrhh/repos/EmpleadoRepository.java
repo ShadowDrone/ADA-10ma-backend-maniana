@@ -8,4 +8,7 @@ import ar.com.ada.api.rrhh.entities.Empleado;
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer>{
     
+    Empleado findByNombre (String nombre);
+    Empleado findByDni (int id);
+
 }

@@ -1,6 +1,9 @@
 package ar.com.ada.api.rrhh.entities;
+
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Random;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,7 +18,7 @@ public class Empleado {
     private String nombre;
     private int edad;
     private BigDecimal sueldo;
-    @Column(name= "estado_id")
+    @Column(name = "estado_id")
     private int estadoId;
     @ManyToOne
     @JoinColumn(name = "categoria_id", referencedColumnName = "categoria_id")
@@ -24,6 +27,7 @@ public class Empleado {
     private Date fechaAlta;
     @Column(name = "fecha_baja")
     private Date fechaBaja;
+    private int dni;
 
     public int getEmpleadoId() {
         return empleadoId;
@@ -57,12 +61,12 @@ public class Empleado {
         this.sueldo = sueldo;
     }
 
-    public int getEstadoId() {
-        return estadoId;
+    public EmpleadoEstadoEnum getEstadoId() {
+        return EmpleadoEstadoEnum.parse(this.estadoId);
     }
 
-    public void setEstadoId(int estadoId) {
-        this.estadoId = estadoId;
+    public void setEstadoId(EmpleadoEstadoEnum estadoId) {
+        this.estadoId = estadoId.getValue();
     }
 
     public Categoria getCategoria() {
@@ -90,6 +94,59 @@ public class Empleado {
         this.fechaBaja = fechaBaja;
     }
 
+    @JsonIgnore
+    public BigDecimal getVentasActuales() {
 
+        Random randomGenerator = new Random();
 
+        // Genero un numero rando hasta 10000
+        double venta = randomGenerator.nextDouble() * 10000 + 1;
+        // redondeo en 2 decimales el random truncando
+        venta = ((long) (venta * 100)) / 100d;
+
+        return new BigDecimal(venta);
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    /***
+     * En este caso es un ENUMERADO con numeracion customizada En JAVA, los
+     * enumerados con numeros customizados deben tener un constructor y un
+     * comparador para poder funcionar correctamente
+     */
+    public enum EmpleadoEstadoEnum {
+        DESCONOCIDO(0),
+        PENDIENTEALTA(1), 
+        ACTIVO(2), 
+        LICENCIA(3), 
+        DESVINCULADO(99);
+
+        private final int value;
+
+        // NOTE: Enum constructor tiene que estar en privado
+        private EmpleadoEstadoEnum(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public static EmpleadoEstadoEnum parse(int id) {
+            EmpleadoEstadoEnum status = null; // Default
+            for (EmpleadoEstadoEnum item : EmpleadoEstadoEnum.values()) {
+                if (item.getValue() == id) {
+                    status = item;
+                    break;
+                }
+            }
+            return status;
+        }
+    }
 }
